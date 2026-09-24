@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Información General del Candidato</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Exact 2-page print rules */
+        @page {
+            size: letter;
+            margin: 10mm 12mm 10mm 12mm;
+        }
+
+        @media print {
+            body { 
+                background: white !important; 
+                padding: 0 !important; 
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print { 
+                display: none !important; 
+            }
+            .page-container { 
+                box-shadow: none !important; 
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            /* Input element rendering in PDF/Print */
+            input, select {
+                border: 1px solid #94a3b8 !important;
+                background-color: #ffffff !important;
+                font-size: 11px !important;
+                padding: 4px 6px !important;
+            }
+            .section-title {
+                font-size: 12px !important;
+                padding: 4px 8px !important;
+                margin-bottom: 8px !important;
+                background-color: #f1f5f9 !important;
+                border-left: 4px solid #334155 !important;
+            }
+            .page-break-before {
+                page-break-before: always;
+                break-before: page;
+            }
+            .avoid-break {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-6 px-4 font-sans text-gray-800">
+
+    <div class="page-container max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md border border-gray-200">
+        
+        <!-- Header -->
+        <div class="border-b-2 border-slate-700 pb-3 mb-5 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold text-slate-800 uppercase tracking-wide">Ficha de Información General</h1>
+                <p class="text-xs text-gray-500">Personal Administrativo / Reclutamiento</p>
+            </div>
+            <div class="text-right">
+                <label class="block text-[10px] font-semibold text-gray-500 uppercase">Fecha de Registro</label>
+                <input type="date" class="mt-0.5 border border-gray-300 rounded px-2 py-1 text-xs outline-none focus:border-blue-500">
+            </div>
+        </div>
+
+        <!-- ================= PAGE 1 CONTENT ================= -->
+        <!-- Section 1: Datos Personales -->
+        <div class="mb-5 avoid-break">
+            <h2 class="section-title text-sm font-bold text-slate-700 uppercase bg-slate-100 px-3 py-1.5 rounded border-l-4 border-slate-700 mb-2.5">
+                1. Datos Personales
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="md:col-span-3">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Nombre Completo (Apellidos y Nombre(s))</label>
+                    <input type="text" placeholder="Ej. Pérez Gómez Juan Carlos" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Fecha de Nacimiento</label>
+                    <input type="date" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Edad</label>
+                    <input type="number" placeholder="Ej. 28" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Estado Civil</label>
+                    <select class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
+                        <option value="">Seleccione...</option>
+                        <option value="Soltero/a">Soltero/a</option>
+                        <option value="Casado/a">Casado/a</option>
+                        <option value="Unión Libre">Unión Libre</option>
+                        <option value="Divorciado/a">Divorciado/a</option>
+                        <option value="Viudo/a">Viudo/a</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Identificación Oficial y Fiscal -->
+        <div class="mb-5 avoid-break">
+            <h2 class="section-title text-sm font-bold text-slate-700 uppercase bg-slate-100 px-3 py-1.5 rounded border-l-4 border-slate-700 mb-2.5">
+                2. Identificación Oficial y Registro Fiscal
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">CURP</label>
+                    <input type="text" maxlength="18" placeholder="18 caracteres" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs uppercase focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">RFC</label>
+                    <input type="text" maxlength="13" placeholder="12 o 13 caracteres" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs uppercase focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Número de Seguro Social (NSS)</label>
+                    <input type="text" maxlength="11" placeholder="11 dígitos" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">C.P. Domicilio Fiscal</label>
+                    <input type="text" maxlength="5" placeholder="Código Postal en SAT" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Datos Bancarios -->
+        <div class="mb-5 avoid-break">
+            <h2 class="section-title text-sm font-bold text-slate-700 uppercase bg-slate-100 px-3 py-1.5 rounded border-l-4 border-slate-700 mb-2.5">
+                3. Información Bancaria
+            </h2>
+            <div class="p-3 border border-gray-200 rounded-lg bg-gray-50/50 grid grid-cols-1 md:grid-cols-3 gap-3 items-center">
+                <div>
+                    <span class="block text-xs font-semibold text-gray-600 mb-1">¿Cuenta con tarjeta/cuenta Santander?</span>
+                    <div class="flex items-center space-x-4 mt-1">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="radio" name="santander" value="Si" class="text-slate-700 focus:ring-slate-500">
+                            <span class="ml-1.5 text-xs">Sí</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="radio" name="santander" value="No" class="text-slate-700 focus:ring-slate-500" checked>
+                            <span class="ml-1.5 text-xs">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Número de Cuenta / CLABE Santander (18 dígitos)</label>
+                    <input type="text" maxlength="18" placeholder="Opcional si cuenta con ella" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 2 BREAK ================= -->
+        <div class="page-break-before pt-2 md:pt-0"></div>
+
+        <!-- Section 4: Créditos y Financiamientos -->
+        <div class="mb-5 avoid-break">
+            <h2 class="section-title text-sm font-bold text-slate-700 uppercase bg-slate-100 px-3 py-1.5 rounded border-l-4 border-slate-700 mb-2.5">
+                4. Créditos y Financiamientos
+            </h2>
+            
+            <div class="space-y-3">
+                <!-- INFONAVIT -->
+                <div class="p-3 border border-gray-200 rounded-lg bg-gray-50/30 grid grid-cols-1 md:grid-cols-4 gap-2.5 items-center">
+                    <div class="font-semibold text-xs text-slate-800">Crédito INFONAVIT</div>
+                    <div>
+                        <select class="w-full border border-gray-300 rounded px-2 py-1.5 text-xs bg-white">
+                            <option value="No">No tiene</option>
+                            <option value="Si">Sí tiene</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Nº de Crédito / Retención" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-slate-500">
+                    </div>
+                    <div>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-2.5 flex items-center text-gray-500 text-xs">$</span>
+                            <input type="number" step="0.01" placeholder="Descuento Mensual" class="w-full border border-gray-300 rounded pl-6 pr-2 py-1.5 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-slate-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FONACOT -->
+                <div class="p-3 border border-gray-200 rounded-lg bg-gray-50/30 grid grid-cols-1 md:grid-cols-4 gap-2.5 items-center">
+                    <div class="font-semibold text-xs text-slate-800">Crédito FONACOT</div>
+                    <div>
+                        <select class="w-full border border-gray-300 rounded px-2 py-1.5 text-xs bg-white">
+                            <option value="No">No tiene</option>
+                            <option value="Si">Sí tiene</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Nº de Crédito / Fonacot" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-slate-500">
+                    </div>
+                    <div>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-2.5 flex items-center text-gray-500 text-xs">$</span>
+                            <input type="number" step="0.01" placeholder="Descuento Mensual" class="w-full border border-gray-300 rounded pl-6 pr-2 py-1.5 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-slate-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Contacto Directo -->
+        <div class="mb-6 avoid-break">
+            <h2 class="section-title text-sm font-bold text-slate-700 uppercase bg-slate-100 px-3 py-1.5 rounded border-l-4 border-slate-700 mb-2.5">
+                5. Contacto Directo
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Teléfono Móvil / WhatsApp</label>
+                    <input type="tel" placeholder="(000) 000-0000" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Correo Electrónico</label>
+                    <input type="email" placeholder="ejemplo@correo.com" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Domicilio Particular Completo</label>
+                    <input type="text" placeholder="Calle, número ext/int, colonia, municipio y estado" class="w-full border border-gray-300 rounded px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+            </div>
+        </div>
+
+        <!-- Signatures / Footer -->
+        <div class="mt-8 pt-4 border-t border-gray-300 grid grid-cols-2 gap-8 text-center avoid-break">
+            <div>
+                <div class="border-b border-gray-400 w-4/5 mx-auto mb-2 h-10"></div>
+                <p class="text-[11px] font-semibold text-gray-700 uppercase tracking-wider">Firma del Candidato</p>
+            </div>
+            <div>
+                <div class="border-b border-gray-400 w-4/5 mx-auto mb-2 h-10"></div>
+                <p class="text-[11px] font-semibold text-gray-700 uppercase tracking-wider">Firma de Recibido / RH</p>
+            </div>
+        </div>
+
+        <!-- Print Button -->
+        <div class="mt-6 text-center no-print">
+            <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-900 text-white font-medium px-6 py-2.5 rounded-lg text-sm shadow transition duration-150">
+                Imprimir o Guardar como PDF
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>
