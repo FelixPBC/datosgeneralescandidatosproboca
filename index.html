@@ -133,11 +133,6 @@
       background-color: #fff;
     }
 
-    .page-break {
-      page-break-before: always;
-      margin-top: 20px;
-    }
-
     /* Print Button */
     .btn-container {
       text-align: center;
@@ -158,22 +153,26 @@
       box-shadow: 0 3px 6px rgba(211, 47, 47, 0.3);
     }
 
-    /* PRINT RULES FOR 2 PAGES FIT */
+ /* PRINT RULES FOR 1 PAGE FIT */
     @media print {
       @page {
-        size: letter;
-        margin: 10mm 12mm;
+        size: letter portrait;
+        margin: 5mm 8mm;
       }
 
-      body {
+      html, body {
+        height: 100%;
         background-color: white;
         padding: 0;
+        margin: 0;
+        overflow: hidden;
       }
 
       .form-container {
         box-shadow: none;
         padding: 0;
         max-width: 100%;
+        border-radius: 0;
       }
 
       .btn-container {
@@ -183,13 +182,34 @@
       .input-group input, .input-group select {
         border: 1px solid #aaa;
         background-color: white;
-        font-size: 11px;
-        padding: 4px;
+        font-size: 10px;
+        padding: 3px 5px;
       }
 
-      .page-break {
-        page-break-before: always;
-        margin-top: 0;
+      .section-title {
+        margin-top: 6px;
+        margin-bottom: 4px;
+        padding: 3px 6px;
+        font-size: 10px;
+      }
+
+      .grid-row {
+        margin-bottom: 4px;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .col-8, .col-6, .col-4 {
+        flex: 0 0 100%;
+      }
+      .header-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+      .header-title {
+        text-align: center;
       }
     }
 
@@ -293,9 +313,6 @@
         <input type="text" maxlength="18" placeholder="Si respondió Sí, ingrese su CLABE o Número de cuenta">
       </div>
     </div>
-
-    <!-- PÁGINA 2 (SALTO DE PÁGINA PARA IMPRESIÓN) -->
-    <div class="page-break"></div>
 
     <div class="section-title">4. Créditos y Financiamientos</div>
     <div class="grid-row">
